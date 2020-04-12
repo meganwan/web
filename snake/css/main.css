@@ -1,0 +1,65 @@
+#main {
+	width: 960px;
+	height: 680px;
+	border:1px solid green ;
+	/* background: limegreen; */
+	position: relative;
+}
+#startbtn {
+	font-family: "book antiqua";
+	font-size: 40px;
+	border-radius: 40%;
+	background-color: palevioletred;
+	outline: 0 !important;
+	cursor: pointer;
+}
+li{
+	list-style-type :none;
+	width: 20px;
+	height: 20px;
+    /* border:1px solid black ; */
+	background-color: #DB7093;
+	position: absolute;
+    top: 340px
+
+}
+.snackHead{
+	background-color: pink;
+}
+.b0{
+	left: 160px;
+}
+#b1{
+	left: 140px;
+}
+#b2{
+	left: 120px;
+}
+#b3{
+	left: 100px;
+}
+#b4{
+	left: 80px;
+}
+#b5{
+	left: 60px;
+}
+#b6{
+	left: 40px;
+}
+#b7{
+	left: 20px;
+}
+#b8{
+	left: 0px;
+}
+#point{
+	width: 20px;
+	height: 20px;
+	background-color: palegreen;
+	position: absolute;
+	left: 480px;
+	top: 340px;
+/* 	border:1px solid black ; */
+	
+}

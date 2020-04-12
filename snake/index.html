@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<!-- <link rel="j" type="text/css" href=""/> -->
+		<script src="js/jquery-3.4.1.js"> </script>
+	</head>
+	<body>
+		<div id="main">
+			<button id="startbtn">START</button>
+			<!-- <canvas></canvas> -->
+			<ul id="snackbody">
+				<li class="snackHead b0">1</li>
+				<li id="b1">2</li>
+				<li id="b2">3</li>
+				<li id="b3">4</li>
+				<li id="b4">5</li>
+				<li id="b5">6</li>
+				<li id="b6">7</li>
+				<li id="b7">8</li>
+				<li id="b8">9</li>
+			</ul>
+			<div id="point">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#startbtn').click(
+					function(){
+						$('#startbtn').hide();
+						var directionFlag = 2;
+						var flag;
+						$(window).keyup(function(event){
+							if(flag!= 1){
+								switch(event.keyCode){
+									case 37: //左键
+										if(directionFlag == 2 || directionFlag == 0){
+											break;
+										}
+										directionFlag = 0;
+										snackmoving();
+										break;
+									case 38://上键
+										if(directionFlag == 3 || directionFlag == 1){
+											break;
+										}
+										directionFlag = 1;
+										snackmoving();
+										break;
+									case 39://右键
+										if(directionFlag == 0 || directionFlag == 2){
+											break;
+										}
+										directionFlag = 2;
+										snackmoving();
+										break;
+									case 40://下键
+										if(directionFlag == 1 || directionFlag == 3){
+											break;
+										}
+										directionFlag = 3;
+										snackmoving();
+										break;
+								}
+							}
+							
+						});
+						
+				        var i = 9;	
+						interval(snackmoving,500);//先执行这个,向qian走了一步,
+						var timer;
+												
+						function interval(func,duration){
+							var inter=function(){
+								func.call(null);//调用snackmoving
+								if(flag==1){
+									return false;
+								}
+								setTimeout(inter,duration);
+							}
+							setTimeout(inter,duration);
+						}
+						
+						function snackmoving(){
+							var headPosition = $(".snackHead").position();
+							switch(directionFlag){
+								case 0:
+									headPosition.left = headPosition.left-20;
+									break;
+								case 1:
+									headPosition.top = headPosition.top-20;
+									break;
+								case 2:
+									headPosition.left = headPosition.left+20;
+									break;
+								case 3:
+									headPosition.top = headPosition.top+20;
+									break;
+							}
+							for(index=1;index<$('li').length;index++){
+								if(headPosition.top==$('li').eq(index).position().top && headPosition.left==$('li').eq(index).position().left){
+									flag = 1;
+									return false; 
+									
+										
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+								}
+							}
+							if(headPosition.left>0 && headPosition.left<960&&headPosition.top>0&&headPosition.top<680){	
+							
+							}else{
+								flag = 1;
+								return false;
+							}
+							// console.log($('#point').position().left);
+							// console.log($('#point').position()
+							// .top);
+							if(headPosition.left==$('#point').position().left && headPosition.top==$('#point').position()
+							.top){
+								updatePoint();
+								
+							}else{
+								$('li').last().remove();
+							}
+							$("li").first().removeClass('snackHead');
+							i++;
+							$('ul').prepend('<li class="snackHead"></li>');
+							$('li').first().css(headPosition);
+							$('li').first().text(i);
+							
+						}
+						function updatePoint(){
+							do{
+								var baseNumL=0;
+								// = (Math.random()+Math.random()+Math.random()+Math.random()+Math.random()
+								// +Math.random())*10;
+								for(n=1;n<=5;n++){
+									baseNumL+=Math.round(Math.random()*10);
+								}
+								var pointL =baseNumL*20;	
+							}while(pointL >= 960);
+							do{
+								//baseNum = (Math.random()+Math.random()+Math.random()+Math.random())*10
+								var baseNumT=0;
+								for(n=1;n<=4;n++){
+									baseNumT+=Math.round(Math.random()*10);
+								}
+								var pointT =baseNumT*20;
+							}while(pointT >= 680);
+							for(n=0;n<$('li').length;n++){
+								var positionAll = $('li').eq(n).position();
+								if (pointL==positionAll.left && pointT==positionAll.top) {
+									updatePoint();
+									break;
+								}else{
+									$('#point').css({left:pointL+'px',top:pointT+'px'});
+								}
+							}
+							
+							
+							
+				            // 
+						}
+					});	
+			})
+		</script>
+	</body>
+</html>
+
